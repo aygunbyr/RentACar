@@ -1,4 +1,5 @@
-﻿using Core.Application.Pipelines.Validations;
+﻿using Core.Application.Pipelines.Transactions;
+using Core.Application.Pipelines.Validations;
 using Core.Application.Rules;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ public static class ApplicationServiceRegistration
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 
             configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
+            configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
         });
 
         return services;
