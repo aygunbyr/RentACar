@@ -1,4 +1,5 @@
-﻿using Core.Application.Pipelines.Caching;
+﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Transactions;
 using Core.Application.Pipelines.Validations;
@@ -30,6 +31,7 @@ public static class ApplicationServiceRegistration
             configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
             configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
         });
 
         //services.AddSingleton<LoggerServiceBase, FileLogger>();
